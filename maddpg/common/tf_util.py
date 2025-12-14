@@ -223,24 +223,42 @@ def absolute_scope_name(relative_scope_name):
 # ================================================================
 
 
-def load_state(fname, saver=None):
+def load_state(fname, saver=None, exp_name=None):
     """Load all the variables to the current session from the location <fname>"""
-    ckpt = tf.train.get_checkpoint_state("./model")
+    # ckpt = tf.train.get_checkpoint_state("./model")
+    # if(exp_name is not None):
+    #     fname = fname + exp_name
+    # if saver is None:
+    #     saver = tf.train.Saver()
+    # if ckpt and ckpt.model_checkpoint_path:
+    #     saver.restore(get_session(), ckpt.model_checkpoint_path)
+    
+    # # saver.restore(get_session(), fname)
+    # return saver
+    if(exp_name is not None):
+        fname = fname + exp_name
     if saver is None:
         saver = tf.train.Saver()
-    if ckpt and ckpt.model_checkpoint_path:
-        saver.restore(get_session(), ckpt.model_checkpoint_path)
-    
-    # saver.restore(get_session(), fname)
+    saver.restore(get_session(), fname)
     return saver
 
 
-def save_state(fname, global_step, saver=None):
+def save_state(fname, global_step, saver=None, exp_name=None):
     """Save all the variables in the current session to the location <fname>"""
+    # os.makedirs(os.path.dirname(fname), exist_ok=True)
+    # if(exp_name is not None):
+    #     fname = fname + exp_name
+    # if saver is None:
+    #     saver = tf.train.Saver()
+    # saver.save(get_session(), fname+'/model', global_step=global_step)
+    # return saver
     os.makedirs(os.path.dirname(fname), exist_ok=True)
+    if(exp_name is not None):
+        fname = fname + exp_name
+
     if saver is None:
         saver = tf.train.Saver()
-    saver.save(get_session(), fname+'/model', global_step=global_step)
+    saver.save(get_session(), fname)
     return saver
 
 # ================================================================

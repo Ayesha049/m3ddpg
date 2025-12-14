@@ -1,4 +1,6 @@
-SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_tag --num-adversaries 3 --exp-name ppRun1 --num-episodes 10000 --save-rate 500 && 
+SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_tag --num-adversaries 3 --exp-name ppRun1 --num-episodes 15000 --save-rate 500 && 
 SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_tag --exp-name ppRun1 --mode test && SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_tag --exp-name ppRun1best --mode test
-SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_speaker_listener --exp-name ccRun1 --num-episodes 60000 --save-rate 500
+SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_speaker_listener --exp-name ccRun2 --num-episodes 30000 --save-rate 500
 SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_speaker_listener --exp-name ccRun1 --mode test & SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_speaker_listener --exp-name ccRun1best --mode test
+SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_adversary --exp-name pdRun1 --num-episodes 60000 --save-rate 500
+SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_adversary --exp-name pdRun1 --mode test & SUPPRESS_MA_PROMPT=1 CUDA_VISIBLE_DEVICES="" python train.py --scenario simple_adversary --exp-name pdRun1best --mode test
